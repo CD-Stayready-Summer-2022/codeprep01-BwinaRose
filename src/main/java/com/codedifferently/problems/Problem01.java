@@ -1,5 +1,7 @@
 package com.codedifferently.problems;
 
+import java.util.HashMap;
+
 public class Problem01 {
     /**
      *
@@ -8,6 +10,16 @@ public class Problem01 {
      * @return
      */
     public Integer countDuplicateLetters(String input, String letter){
-        return null;
+        input = input.toLowerCase();
+        char letterChar = letter.charAt(0);
+        char[] letters = input.toCharArray();
+        HashMap<Character, Integer> hashmap = new HashMap<>();
+        hashmap.put(letterChar,0);
+        for (char c : letters) {
+            if (hashmap.containsKey(c)){
+                hashmap.put(c,hashmap.get(c)+1);
+            }
+        }
+        return hashmap.get(letterChar);
     }
 }

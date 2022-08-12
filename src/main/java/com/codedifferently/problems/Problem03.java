@@ -1,5 +1,8 @@
 package com.codedifferently.problems;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Problem03 {
     /**
      * You will be given an integer called number and an array called possibleFamilyMembers
@@ -18,6 +21,34 @@ public class Problem03 {
      * @return
      */
     public Integer[] numberFamily(Integer number, Integer[] possibleFamilyMembers){
-        return null;
+        List<Integer> list = new ArrayList<>(possibleFamilyMembers.length);
+        for (int i: possibleFamilyMembers) {
+            list.add(i);
+        }
+        List<Integer> output = new ArrayList<>();
+        if (list.contains(number)) {
+            output.add(number);
+        }
+        int decrementIndex = 1;
+        while (true){
+            if(list.contains(number - decrementIndex)){
+                output.add(0, (number - decrementIndex));
+            }
+            else{
+                break;
+            }
+            decrementIndex++;
+        }
+        int incrementIndex = 1;
+        while (true){
+            if(list.contains(number + incrementIndex)){
+                output.add(number + incrementIndex);
+            }
+            else {
+                break;
+            }
+            incrementIndex++;
+        }
+        return output.toArray(new Integer[0]);
     }
 }
